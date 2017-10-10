@@ -1,0 +1,15 @@
+#jumbo{
+  background-image: url('http://www.montanaranchangus.com/images/pages/home/homeSlide/Montana-Ranch-Evening_Fall.jpg');
+  background-size: cover;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.display-3{
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(9, 58, 17);
+  font-weight: bold;
+  opacity: 0.8;
+}
