@@ -9,10 +9,20 @@
 #size{
   height: 63px;
   width: 63px;
-
 }
 
 #card-title {
   color: rgb(0, 0, 1);
 }
 
+.card {
+  margin-bottom: 18px;
+}
+
+.sub-title {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  padding-bottom: 0px;
+}

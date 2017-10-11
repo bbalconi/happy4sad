@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import Jumbo from '../Jumbotron/Jumbotron.js';
+import OurNav from '../OurNav/OurNav.js';
+import Login from '../Login/Login.js';
+import HomePage from '../HomePage/HomePage.js';
+import SignUp from '../SignUp/SignUp.js';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      initialized: false
+      initialized: false,
     }
   }
+
   getSpotify(){
     if (this.state.initialized) {
       this.setState({
@@ -33,9 +42,13 @@ componentDidMount(){
   render() {
     if(this.state.initialized){
     return (
-      <div >
-        <Jumbo tracks={this.tracks}/>
-      </div>
+        <Router>
+        <div>
+          <Route exact path="/" render={() => <HomePage tracks={this.tracks}/>} />
+          <Route path="/Login" render={() => <Login />}/>
+          <Route path="/SignUp" render={() => <SignUp />}/>
+        </div>
+        </Router>
     );
   } else {
     return (

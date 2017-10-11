@@ -6,18 +6,34 @@ import { Card, CardImg, CardText, CardBody,
 export default class SongCard extends Component{
   constructor(){
     super()
+    this.songLike = this.songLike.bind(this);
+    this.state = {
+      likes: 0,
   }
+  }
+
+  songLike(e){
+    this.setState({
+      likes: this.state.likes + 1
+  });
+  fetch('/likes/' + this.props.track.id, {
+    method: 'POST'
+  });
+  }
+
   render(){
-  let fuckr = this.props.tracks.tracks;
-  console.log(fuckr.items["0"].album.images["0"]);
-  
-  return (
+    let yoMark = this.props.track
+    console.log(yoMark);
+    let source = 'https://open.spotify.com/embed?uri=' + yoMark.uri
+    console.log(source);
+  return ( 
     <div>
     <Card id='song-card'>
       <CardBody>
-        <CardImg src={fuckr.items["3"].album.images["0"].url} id='size'/>
-        <CardTitle id='card-title'>{fuckr.items['3'].name}</CardTitle>
-        <CardSubtitle>{fuckr.items['3'].artists['0'].name}</CardSubtitle>
+        <CardTitle id='card-title'>{yoMark.name}</CardTitle>
+        <CardSubtitle className='sub-title'>By: {yoMark.artists['0'].name}</CardSubtitle>
+        <iframe className='frame' src={source} width="80" height="100" frameborder="0" allowtransparency="true"></iframe>
+        <Button onClick={this.songLike}>Liked: {this.state.likes} times!</Button>
       </CardBody>
     </Card>
     </div>
