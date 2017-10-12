@@ -42,26 +42,23 @@ app.get("/search", (req, res, next) => {
   spotifyApi.searchTracks('track:Montana')
   .then(function(data) {
     Song.find(function(err, songs){
-      console.log(songs);
       if (err) {
         next (err);
       } else {
         data.body.tracks.items.forEach((s)=>{
-          console.log(data.body.tracks.items);
-          console.log(s.id);
           let songMatch = songs.find((dbSongs)=>{
             if (dbSongs.track == s.id) {
               return true
             } 
-          }) 
+          })
+          if(songMatch){
           s.likeCount = songMatch.likeCount;
-          res.json(data.body);           
+          }          
         })
+        res.json(data.body); 
       }
     })
-    console.log(data.body);
-    res.json(data.body);
-
+  
   }, function(err) {
     console.error(err);
   });
@@ -90,7 +87,6 @@ function getToken() {
 
 app.post('/songs', function (req, res, next) {
   var song = new Song();
-  console.log(req.body);
   song.track = req.body.track
   song.likeCount = req.body.likeCount;
   song.save(function (err, songReturned) {
@@ -105,8 +101,10 @@ app.post('/songs', function (req, res, next) {
 
 app.post('/users', function (req, res, next) {
   var user = new User();
+  console.log(req.body)
   user.username = req.body.username
   user.password = req.body.password;
+  user.song = [req.body.song];
   user.save(function (err, userReturned) {
     if (err) {
       console.log(err);
@@ -136,7 +134,7 @@ app.post('/likes/:track', function (req, res, next) {
       } else {
         var song = new Song();
         song.track = req.params.track;
-        song.likeCount = 1;
+        song.likeCount = 0;
         song.save(function(err, addedSong){
           if (err){
             next(err);
@@ -169,15 +167,18 @@ app.post('/login', function (req, res, next) {
       next(err);
     } else {
       console.log("--------")
-      console.log(user);
+ //     console.log(user);
     if (req.body.password === user[0].password){
+      console.log(user);
       res.json(user);
     } else {
       res.json("WRONG")
       }      
     }
-  });
+  })
 })
+
+
 
 app.listen(5000, () => {
   getToken();

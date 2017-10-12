@@ -37,6 +37,9 @@ export default class OurNav extends React.Component {
               <DropdownItem><Link className="nav-link" to="/Login">Login</Link></DropdownItem>
               <DropdownItem divider />
               <DropdownItem><Link className="nav-link" to="/SignUp">Sign Up</Link></DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem><Link className="nav-link" to="/Favorites">Favorite Songs</Link></DropdownItem>
+
             </DropdownMenu>
           </NavDropdown>
             </Nav>

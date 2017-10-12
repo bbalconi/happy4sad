@@ -8,11 +8,32 @@ export default class Jumbo extends Component{
     super()
   }
   render(){
-    let songArr = this.props.tracks.tracks.items.slice(1,4).map((track, i)=>{
-     return <SongCard className='card' key={i} track = {track} />
-    }); 
-    return (
+    let songArr = [];
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
     
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+    
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+    
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+    
+      return array;
+    }
+    let shuffledArray = shuffle(this.props.tracks.tracks.items);
+    for (let i = 0; i < 3; i++){
+    let randomDigit = Math.floor(Math.random() * 19)
+      songArr.push(<SongCard getSpotify={this.props.getSpotify} className='card' key={i} track = {shuffledArray[i]} />)
+    } 
+
+    return (
     <div>
       <Jumbotron id='jumbo' >
         <h1 className="display-3">Montana Songs</h1>
