@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
+import './LikeButton.css';
 
 export default class LikeButton extends Component{
   constructor(){
@@ -12,7 +13,9 @@ export default class LikeButton extends Component{
 
   songLike(e){
     fetch('/likes/' + this.props.yoMark.id, {
-      method: 'POST'
+      method: 'POST',
+      // headers: {'Content-Type': 'application/json'},
+      // body: {username: }
     })
   }
 
@@ -34,7 +37,7 @@ export default class LikeButton extends Component{
 
   render(){
     return (
-    <div>
+    <div className='like-btn'>
       <Button onClick={this.incrementLikeCount}>Liked: {this.state.likeCount} times!</Button>
     </div>
     );

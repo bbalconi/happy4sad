@@ -12,7 +12,7 @@ export default class HomePage extends Component{
     
     return (
     <div>
-      <OurNav />
+      
       <Jumbo tracks={this.props.tracks} getSpotify={this.props.getSpotify}/>
     </div>
     );

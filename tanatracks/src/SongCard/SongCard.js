@@ -12,11 +12,13 @@ export default class SongCard extends Component{
   return ( 
     <div>
     <Card id='song-card'>
-      <CardBody>
+      <CardBody id='card-size'>
         <CardTitle id='card-title'>{yoMark.name}</CardTitle>
         <CardSubtitle className='sub-title'>By: {yoMark.artists['0'].name}</CardSubtitle>
-        <iframe className='frame' src={source} width="80" height="100" frameborder="0" allowtransparency="true"></iframe>
-        <LikeButton yoMark={this.props.track} songLike = {this.songLike}/>
+        <div className='workkkplz'>
+          <iframe className='frame' src={source} width="80" height="100" frameborder="0" allowtransparency="true"></iframe>
+          <LikeButton className='like-button' yoMark={this.props.track} songLike = {this.songLike}/>
+        </div>
       </CardBody>
     </Card>
     </div>

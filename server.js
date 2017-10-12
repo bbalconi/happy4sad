@@ -166,15 +166,17 @@ app.post('/login', function (req, res, next) {
       console.log(err);
       next(err);
     } else {
-      console.log("--------")
- //     console.log(user);
     if (req.body.password === user[0].password){
-      console.log(user);
-      res.json(user);
+      // res.json(user);
     } else {
-      res.json("WRONG")
+      // res.json("WRONG")
       }      
     }
+  }).populate('song').
+  exec(function(err, user) {
+    if (err) { 
+      return handleError (err);
+    } res.json(user)
   })
 })
 

@@ -45,8 +45,9 @@ export default class Login extends Component{
  
     return (
     <div>
-      <OurNav />
+      
       <Jumbotron id='login' >
+      <OurNav />
       <h1 className="display-3">Montana Songs</h1>
       <InputGroup id='input-field'>
         <div className='fucss'>

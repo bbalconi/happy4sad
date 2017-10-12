@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'reactstrap';
-import SongCard from '../SongCard/SongCard.js'
+import SongCard from '../SongCard/SongCard.js';
+import OurNav from '../OurNav/OurNav';
 
 export default class JumboFavorites extends Component{
   constructor(){
@@ -22,6 +23,7 @@ export default class JumboFavorites extends Component{
   return (
     <div>
       <Jumbotron id='jumbo' >
+      <OurNav />
         <h1 className="display-3">Montana Songs</h1>
         <p> 
           {songArr}

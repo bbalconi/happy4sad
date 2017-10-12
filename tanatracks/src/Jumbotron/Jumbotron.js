@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import './Jumbotron.css';
-import SongCard from '../SongCard/SongCard.js'
+import SongCard from '../SongCard/SongCard.js';
+import OurNav from '../OurNav/OurNav.js';
 
 export default class Jumbo extends Component{
   constructor(){
@@ -36,6 +37,7 @@ export default class Jumbo extends Component{
     return (
     <div>
       <Jumbotron id='jumbo' >
+      <OurNav />
         <h1 className="display-3">Montana Songs</h1>
         <p> 
           {songArr}
