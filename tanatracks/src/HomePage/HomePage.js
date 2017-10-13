@@ -8,12 +8,12 @@ export default class HomePage extends Component{
     super()
   }
   render(){
-    console.log(this.props.getSpotify);
+    console.log(this.props);
     
     return (
     <div>
       
-      <Jumbo tracks={this.props.tracks} getSpotify={this.props.getSpotify}/>
+      <Jumbo username={this.props.username} tracks={this.props.tracks} getSpotify={this.props.getSpotify}/>
     </div>
     );
   };

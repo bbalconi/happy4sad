@@ -1,0 +1,39 @@
+#song-card{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: rgba(206, 198, 198, 0.65);
+  border: 2px black solid;
+  display: inline-block;
+}
+
+#size{
+  height: 63px;
+  width: 63px;
+}
+
+#card-title {
+  color: rgb(0, 0, 1);
+}
+
+.card {
+  margin-bottom: 18px;
+}
+
+.sub-title {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  padding-bottom: 0px;
+}
+
+.workkkplz{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 41.5%;
+  margin-right: 18.5%;
+  width: 40%;
+}

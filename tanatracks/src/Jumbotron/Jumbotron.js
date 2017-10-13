@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import './Jumbotron.css';
-import SongCard from '../SongCard/SongCard.js';
+import SongCard from '../Tracks/SongCard/SongCard.js';
 import OurNav from '../OurNav/OurNav.js';
 
 export default class Jumbo extends Component{
@@ -31,7 +31,7 @@ export default class Jumbo extends Component{
     let shuffledArray = shuffle(this.props.tracks.tracks.items);
     for (let i = 0; i < 3; i++){
     let randomDigit = Math.floor(Math.random() * 19)
-      songArr.push(<SongCard getSpotify={this.props.getSpotify} className='card' key={i} track = {shuffledArray[i]} />)
+      songArr.push(<SongCard username = {this.props.username} getSpotify={this.props.getSpotify} className='card' key={i} track = {shuffledArray[i]} />)
     } 
 
     return (
@@ -39,9 +39,9 @@ export default class Jumbo extends Component{
       <Jumbotron id='jumbo' >
       <OurNav />
         <h1 className="display-3">Montana Songs</h1>
-        <p> 
+        
           {songArr}
-        </p>
+        
         
       </Jumbotron>
     </div>

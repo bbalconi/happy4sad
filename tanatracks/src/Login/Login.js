@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button, InputGroupButton, Input, InputGroup } from 'reactstrap';
 import './Login.css';
+import { withRouter } from 'react-router-dom';
 import OurNav from '../OurNav/OurNav.js'
 
-export default class Login extends Component{
-  constructor(){
-    super()
+class Login extends Component{
+  constructor(props){
+    super(props)
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.getData = this.getData.bind(this);
+    this.logIn = this.logIn.bind(this);
     this.state = {
       username: "",
       password: ""
@@ -27,22 +28,17 @@ export default class Login extends Component{
       });
     }
   
+    logIn(){
+      this.props.getData({
+        username: this.state.username,
+        password: this.state.password
+      });
+      this.props.history.push('/')
+    }
 
 
-  getData(){
-    console.log(this.state.username);
-    fetch('/login',{
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        username: this.state.username, 
-        password: this.state.password,
-      })
-    });
-  };
 
   render(){
- 
     return (
     <div>
       
@@ -53,7 +49,7 @@ export default class Login extends Component{
         <div className='fucss'>
           <Input value={this.state.username} onChange={this.handleUsername} className='inputer' placeholder="Enter username..."/>
           <Input value={this.state.password} onChange={this.handlePassword} className='inputer' placeholder="Enter password..."/>
-          <InputGroupButton><Button onClick={this.getData}>Login</Button></InputGroupButton>
+          <InputGroupButton><Button onClick={this.logIn}>Login</Button></InputGroupButton>
         </div>
       </InputGroup>
       </Jumbotron >
@@ -61,3 +57,5 @@ export default class Login extends Component{
     );
   };
 }
+
+export default withRouter(Login)

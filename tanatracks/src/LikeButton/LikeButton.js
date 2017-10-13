@@ -5,25 +5,27 @@ import './LikeButton.css';
 export default class LikeButton extends Component{
   constructor(){
     super()
-    console.log('LikeButton');
     this.state = {likeCount: 0};
     this.incrementLikeCount = this.incrementLikeCount.bind(this);
     this.songLike = this.songLike.bind(this);
   }
 
-  songLike(e){
+  songLike(){
+    console.log(this.props.username[0]);
     fetch('/likes/' + this.props.yoMark.id, {
       method: 'POST',
-      // headers: {'Content-Type': 'application/json'},
-      // body: {username: }
-    })
-  }
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: this.props.username
+    }),
+  })
+};
 
   incrementLikeCount(){
+    console.log(this.props.username);
     this.songLike();
     let likeCount = this.state.likeCount + 1;
     this.setState({likeCount: likeCount});
-    console.log(this.state.likeCount);
   }
 
   componentDidMount(){
